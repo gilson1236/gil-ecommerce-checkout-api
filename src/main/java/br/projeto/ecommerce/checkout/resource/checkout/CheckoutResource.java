@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
-import br.projeto.ecommerce.checkout.resource.checkout.CheckoutRequest;
-import br.projeto.ecommerce.checkout.resource.checkout.CheckoutResponse;
 import br.projeto.ecommerce.checkout.entity.CheckoutEntity;
 import br.projeto.ecommerce.checkout.service.CheckoutService;
 
@@ -23,7 +21,8 @@ public class CheckoutResource {
     
     @PostMapping("/")
     public ResponseEntity<CheckoutResponse> create(@RequestBody CheckoutRequest checkoutRequest){
-        final CheckoutEntity checkoutEntity = checkoutService.create(checkoutRequest).orElseThrow();
+        final CheckoutEntity checkoutEntity =
+                checkoutService.create(checkoutRequest).orElseThrow();
         final CheckoutResponse checkoutResponse = CheckoutResponse.builder()
                 .code(checkoutEntity.getCode())
                 .build();

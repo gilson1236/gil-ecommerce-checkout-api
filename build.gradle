@@ -11,6 +11,9 @@ sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
+	maven {
+		url 'https://packages.confluent.io/maven/'
+	}
 }
 
 ext {
@@ -26,8 +29,11 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-stream
 	implementation group: 'org.springframework.cloud', name: 'spring-cloud-stream', version: '3.0.13.RELEASE'
 	implementation 'org.springframework.cloud:spring-cloud-stream-binder-kafka-streams'
+	// https://mvnrepository.com/artifact/io.confluent/kafka-avro-serializer
+	implementation group: 'io.confluent', name: 'kafka-avro-serializer', version: '6.2.0'
 	implementation 'org.postgresql:postgresql'
 	compileOnly 'org.projectlombok:lombok'
+    compileOnly "org.apache.avro:avro:1.10.1"
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
